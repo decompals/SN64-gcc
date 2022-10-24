@@ -45,7 +45,7 @@ jobs:
       - name: Create release archive
         run: |
           cp xgcc gcc
-          tar -czf ${{ matrix.TARGET.ARCHIVE_NAME }} cpp cc1 gcc cc1plus g++
+          tar -czf ../${{ matrix.TARGET.ARCHIVE_NAME }} cpp cc1 gcc cc1plus g++
       - name: Upload archive
         uses: actions/upload-artifact@v2
         with:

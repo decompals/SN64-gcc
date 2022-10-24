@@ -176,7 +176,7 @@ PREMADE_ATTRTAB_MD = Makefile  # Guaranteed not to cmp equal to md.
 PREMADE_ATTRTAB = 
 
 target=mips-mips-gnu
-target_alias="Nintendo 64"
+target_alias=Nintendo64
 tmake_file=./config/t-libc-ok
 out_file=./config/mips/mips.c
 out_object_file=mips.o

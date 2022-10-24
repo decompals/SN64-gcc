@@ -5,6 +5,10 @@ on: [push]
 jobs:
   build:
     runs-on: ${{ matrix.TARGET.OS }}
+    defaults:
+      run:
+        shell: bash
+        working-directory: 2.7.2-970404
     strategy:
       fail-fast: false
       matrix:
@@ -27,27 +31,18 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install dependencies (Ubuntu)
-        shell: bash
         if: matrix.TARGET.OS == 'ubuntu-latest'
         run: |
           sudo apt-get update
           sudo apt-get install -y build-essential bison file gperf gcc gcc-multilib
-      - name: Configure for mips
-        shell: bash
-        run: |
-          ./configure --target=mips-mips-gnu --prefix=/opt/cross --with-gnu-as --disable-gprof --disable-gdb --disable-werror --host=${{ matrix.TARGET.HOST }} --build=${{ matrix.TARGET.HOST }}
       - name: Make
-        shell: bash
         run: |
           make cpp cc1 xgcc cc1plus g++ CFLAGS="${{ matrix.TARGET.CFLAGS }}"
-      - name: Test for file
-        shell: bash
+      - name: Test for cc1
         run: |
           test -f cc1
           file cc1
-          ./cc1 test.c
       - name: Create release archive
-        shell: bash
         run: |
           cp xgcc gcc
           tar -czf ${{ matrix.TARGET.ARCHIVE_NAME }} cpp cc1 gcc cc1plus g++

@@ -15,7 +15,7 @@ jobs:
         TARGET:
           - {
               OS: 'ubuntu-latest',
-              CFLAGS: '-static -std=gnu89 -O2 -DHAVE_VPRINTF',
+              CFLAGS: '-static -m32 -std=gnu89 -O2 -DHAVE_VPRINTF',
               HOST: 'i386-pc-linux',
               ARCHIVE_NAME: 'SN64-gcc-2.7.2-970404-linux.tar.gz'
             }

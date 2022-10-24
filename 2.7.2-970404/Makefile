@@ -177,7 +177,6 @@ PREMADE_ATTRTAB =
 
 target=mips-mips-gnu
 target_alias="Nintendo 64"
-xmake_file=../Makefile.in
 tmake_file=./config/t-libc-ok
 out_file=./config/mips/mips.c
 out_object_file=mips.o
@@ -963,7 +962,7 @@ c++.distdir:
 .SUFFIXES: .in .def
 
 Makefile: $(srcdir)/Makefile.in $(srcdir)/configure $(srcdir)/version.c \
-   $(xmake_file) $(tmake_file) \
+   $(tmake_file) \
    $(LANG_MAKEFILES)
 	cp config.status config.run
 	$(SHELL) config.run
